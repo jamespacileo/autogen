@@ -45,11 +45,10 @@ class GroupChat:
         """Return the next agent in the list."""
         if agents == self.agents:
             return agents[(self.agent_names.index(agent.name) + 1) % len(agents)]
-        else:
-            offset = self.agent_names.index(agent.name) + 1
-            for i in range(len(self.agents)):
-                if self.agents[(offset + i) % len(self.agents)] in agents:
-                    return self.agents[(offset + i) % len(self.agents)]
+        offset = self.agent_names.index(agent.name) + 1
+        for i in range(len(self.agents)):
+            if self.agents[(offset + i) % len(self.agents)] in agents:
+                return self.agents[(offset + i) % len(self.agents)]
 
     def select_speaker_msg(self, agents: List[Agent]):
         """Return the message for selecting the next speaker."""
